@@ -6,21 +6,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="assets/reset.css" />
 		<link rel="stylesheet" href="assets/style.css" />
+		<link rel="icon" type="image/png" href="assets/encryption.png" />
 		<title>Decodificador</title>
 	</head>
 	<body>
-		<header>
-			<div class="logo-container">
-				<img src="assets/A-de-alura.svg" alt="Logo da Alura" />
-			</div>
-		</header>
+		<header><img src="assets/A-de-alura.svg" alt="Logo da Alura" /></header>
 		<main>
-			<section class="input-fieldset">
+			<section class="input-section">
 				<textarea
-					class="input-area"
-					rows="15"
-					cols="80"
 					placeholder="Digite seu texto..."
+					class="input-area"
+					id="inputText"
+					required
+					title="Por favor inclua uma mensagem"
 				></textarea>
 				<div class="aviso">
 					<svg
@@ -43,24 +41,25 @@
 							</clipPath>
 						</defs>
 					</svg>
-
 					<span>Apenas letras minúsculas e sem acento.</span>
 				</div>
-				<button id="criptografar">Criptografar</button>
-				<button id="descriptografar">Descriptografar</button>
+				<div class="submit-btns">
+					<button type="submit" id="criptografar">Criptografar</button>
+					<button type="submit" id="descriptografar">Descriptografar</button>
+				</div>
 			</section>
-			<section class="output-fieldset">
-				<div class="output-area">
-					<img src="assets/High-quality-image.svg" />
-					<span class="texto-output-padrao">Nenhuma mensagem encontrada</span>
-					<span class="texto-output-padrao"
-						>Digite um texto que você deseja criptografar ou
-						descriptografar</span
-					>
-					<button>Copiar</button>
+			<section class="output-section">
+				<p class="output" id="output">Teste</p>
+				<img src="assets/High-quality-image.svg" class="decorative-img" />
+				<span id="output-big-text">Nenhuma mensagem encontrada</span>
+				<span id="output-small-text"
+					>Digite um texto que você deseja criptografar ou
+					descriptografar.</span
+				>
+				<div class="copy-btn">
+					<button id="copiar">Copiar</button>
 				</div>
 			</section>
 		</main>
-		<footer></footer>
 	</body>
 </html>
