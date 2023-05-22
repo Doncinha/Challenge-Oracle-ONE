@@ -1,16 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-	var encryptBtn = document.getElementById("criptografar");
-	var decryptBtn = document.getElementById("descriptografar");
-	var outputTextElement = document.getElementById("output");
-	var elements = [
+	const encryptBtn = document.getElementById("criptografar");
+	const decryptBtn = document.getElementById("descriptografar");
+	const outputTextElement = document.getElementById("output");
+	const elements = [
 		document.getElementById("decorative-img"),
 		document.getElementById("output-big-text"),
 		document.getElementById("output-small-text"),
 	];
-	var copyBtn = document.getElementById("copiar");
+	const copyBtn = document.getElementById("copiar");
+	const inputText = document.getElementById("inputText");
+
+	function cleanUpInput(event) {
+		const inputTextValue = event.target.value;
+		const cleanedUpInputValue = inputTextValue
+			.normalize("NFD")
+			.replace(/[\u0300-\u036f]/g, "")
+			.toLowerCase();
+
+		event.target.value = cleanedUpInputValue;
+	}
 
 	function updateOutputSection(text) {
-		outputTextElement.innerHTML = text;
+		outputTextElement.innerText = text;
 		outputTextElement.style.display = "block";
 		copyBtn.style.display = "block";
 		for (const element of elements) {
@@ -31,6 +42,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function encrypt(text) {
 		if (text) {
+			text = text.replaceAll("e", "enter");
+			text = text.replaceAll("i", "ines");
+			text = text.replaceAll("a", "ai");
+			text = text.replaceAll("o", "ober");
+			text = text.replaceAll("u", "ufat");
 			updateOutputSection(text);
 		} else {
 			showMessage("Não há texto para criptografar.", "alert-warning");
@@ -39,6 +55,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function decrypt(text) {
 		if (text) {
+			text = text.replaceAll("ai", "a");
+			text = text.replaceAll("enter", "e");
+			text = text.replaceAll("ines", "i");
+			text = text.replaceAll("ober", "o");
+			text = text.replaceAll("ufat", "u");
 			updateOutputSection(text);
 		} else {
 			showMessage("Não há texto para descriptografar.", "alert-warning");
@@ -46,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function copyToClipboard() {
-		var outputText = outputTextElement.textContent.trim();
+		const outputText = outputTextElement.textContent.trim();
 		if (outputText) {
 			navigator.clipboard
 				.writeText(outputText)
@@ -58,14 +79,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	}
 
 	function handleClick(event) {
-		var inputText = document.getElementById("inputText").value.trim();
-
 		switch (event.target.id) {
 			case "criptografar":
-				encrypt(inputText);
+				encrypt(inputText.value);
 				break;
 			case "descriptografar":
-				decrypt(inputText);
+				decrypt(inputText.value);
 				break;
 			case "copiar":
 				copyToClipboard();
@@ -76,6 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		}
 	}
 
+	inputText.addEventListener("input", cleanUpInput);
 	encryptBtn.addEventListener("click", handleClick);
 	decryptBtn.addEventListener("click", handleClick);
 	copyBtn.addEventListener("click", handleClick);
