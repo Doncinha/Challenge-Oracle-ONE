@@ -8,7 +8,7 @@ O projeto consiste em criar uma página na web para criptografar e descriptograf
 - [X] Lógica de criptografia e descriptografia
 - [X] Botão de copiar para a área de transferência a saída
 - [X] Tratamento de entrada
-- [ ] Responsividade para múltiplas plataformas
+- [X] Responsividade para múltiplas plataformas
 
 ### Feedback-specific
 
