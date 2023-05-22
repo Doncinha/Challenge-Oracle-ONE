@@ -42,11 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function encrypt(text) {
 		if (text) {
-			text = text.replaceAll("e", "enter");
-			text = text.replaceAll("i", "ines");
-			text = text.replaceAll("a", "ai");
-			text = text.replaceAll("o", "ober");
-			text = text.replaceAll("u", "ufat");
+			text = text
+				.replaceAll("e", "enter")
+				.replaceAll("i", "ines")
+				.replaceAll("a", "ai")
+				.replaceAll("o", "ober")
+				.replaceAll("u", "ufat");
 			updateOutputSection(text);
 		} else {
 			showMessage("Não há texto para criptografar.", "alert-warning");
@@ -55,11 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 	function decrypt(text) {
 		if (text) {
-			text = text.replaceAll("ai", "a");
-			text = text.replaceAll("enter", "e");
-			text = text.replaceAll("ines", "i");
-			text = text.replaceAll("ober", "o");
-			text = text.replaceAll("ufat", "u");
+			text = text
+				.replaceAll("ai", "a")
+				.replaceAll("enter", "e")
+				.replaceAll("ines", "i")
+				.replaceAll("ober", "o")
+				.replaceAll("ufat", "u");
 			updateOutputSection(text);
 		} else {
 			showMessage("Não há texto para descriptografar.", "alert-warning");
