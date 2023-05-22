@@ -71,10 +71,69 @@ button {
 	font-size: 16px;
 }
 
+button:hover {
+	cursor: pointer;
+	scale: calc(110%);
+	transition: all 0.1s;
+	animation: glowing 1s infinite;
+}
+
+@keyframes glowing {
+	0% {
+		box-shadow: 0 0 10px 5px rgba(10, 56, 113, 0.5) inset;
+	}
+
+	50% {
+		box-shadow: 0 0 20px 5px rgba(10, 56, 113, 0.5) inset;
+	}
+
+	100% {
+		box-shadow: 0 0 10px 5px rgba(10, 56, 113, 0.5) inset;
+	}
+}
+
+button:active {
+	scale: calc(90%);
+	animation: flash 0.1s linear;
+	transition: all 0s;
+}
+
+@keyframes flash {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0;
+	}
+
+	100% {
+		opacity: 1;
+	}
+}
+
 #criptografar {
 	margin-right: 24px;
 	color: #fff;
 	background: #0a3871;
+}
+
+#criptografar:hover {
+	animation: glowing-light 1s infinite;
+}
+
+@keyframes glowing-light {
+	0% {
+		box-shadow: 0 0 10px 5px rgba(55, 153, 255, 0.5) inset;
+	}
+
+	50% {
+		box-shadow: 0 0 20px 5px rgba(55, 153, 255, 0.5) inset;
+	}
+
+	100% {
+		box-shadow: 0 0 10px 5px rgba(55, 153, 255, 0.5) inset;
+	}
 }
 
 #descriptografar {
@@ -136,4 +195,9 @@ button {
 	display: block;
 	margin: 32px;
 	margin-top: auto;
+}
+
+#copiar,
+.output {
+	display: none;
 }
