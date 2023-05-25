@@ -40,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function () {
 		setTimeout(() => document.body.removeChild(messageElement), 1500);
 	}
 
+	function updateInputSection() {
+		inputText.value = "";
+	}
+
 	function encrypt(text) {
 		if (text) {
 			text = text
@@ -49,6 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				.replaceAll("o", "ober")
 				.replaceAll("u", "ufat");
 			updateOutputSection(text);
+			updateInputSection();
 		} else {
 			showMessage("Não há texto para criptografar.", "alert-warning");
 		}
@@ -63,6 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 				.replaceAll("ober", "o")
 				.replaceAll("ufat", "u");
 			updateOutputSection(text);
+			updateInputSection();
 		} else {
 			showMessage("Não há texto para descriptografar.", "alert-warning");
 		}
